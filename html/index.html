@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <style>
+
+        .active{
+            background-color:red;
+        }
+        #list{
+            user-select:none;
+            margin:100px auto;
+        }
+        .index{
+            disply:none;
+
+        }
+        #list{
+            list-style:none;
+
+        }
+
+    </style>
+    <script>
+        //入口函数
+        window.onload = function(){
+            var oList = document.getElementById("list");
+            var aLi = oList.getElementsByTagName("li");
+            var aA = oList.getElementsByTagName("a");
+            var aDiv = oList.getElementsByTagName("div");
+            var timer;
+            for (var i=0;i<aLi.length-1;i++){//aLi长度
+                aLi[i].index = i;
+                aLi[i].onmouseover = function(){
+                    //隐藏
+                    clearTimeout(timer);
+                    for(var i=0;i<aLi.length;i++){
+                        aDiv[i].style.display = "none";
+                    }
+
+                    aDiv[this.index].style.display="block";
+                    aA[this.index].className = "active";
+                };
+
+                aLi[i].onmouseout = function(){
+                    var _this = this.index;
+                    //console.log(this);//this:当前调用aA
+                    setTimeout(function(){
+                        console.log(this);//this:当前调用window
+                       aDiv[_this].style.display = "none";
+                        aA[_this].className = "none";
+                    },1500);
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li >
+        <a href="#">中国</a>
+        <div clsss="index">
+            <span>中国</span>
+            <span>汉语</span>
+            <span>文化</span>
+        </div>
+    </li>
+    <li>
+        <a href="#">中国</a>
+        <div clsss="index">
+            <span>中国</span>
+            <span>汉语</span>
+            <span>文化</span>
+        </div>
+    </li>
+    <li>
+        <a href="#">中国</a>
+        <div clsss="index">
+            <span>中国</span>
+            <span>汉语</span>
+            <span>文化</span>
+        </div>
+    </li>
+    <li>
+        <a href="#">中国</a>
+        <div clsss="index">
+            <span>中国</span>
+            <span>汉语</span>
+            <span>文化</span>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

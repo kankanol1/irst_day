@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            margin:0;
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+            color:#333;
+        }
+        img{
+            border:none;
+            vertical-align:top;
+
+
+        }
+        #box{
+            width:290px;
+            height:210px;
+            border:1px solid #ff6300;
+            padding: 4px;
+
+        }
+        #left{
+            float:left;
+            width:50px;
+            margin:0;
+            padding:0;
+        }
+        #right{
+            float:right;
+            width:50px;
+            margin:0;
+            padding:0;
+
+        }
+        #center{
+            float:left;
+            width:188px;
+            font-size:0;
+            margin-left:1px;
+
+        }
+        #center img {
+            width:188px;
+            height:208px;
+            display:none;
+            float:left;
+        }
+        #box li{
+            magin-bttom:2px;
+            height:28px;
+        }
+        #box li a{
+            float: left;
+            width: 48px;
+            height: 26px;
+            border:1px solid #ffadad;
+            font:12px/26px "微软雅黑";
+            text-align:center;
+            background:url("img/li_bg.png");
+        }
+        #center .select{
+            display:block;
+        }
+        #box .hover{
+            background:url(img/li_hover_bg.png);
+            color:#FFF;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById("box");
+            var aUl = oBox.getElementsByTagName("ul");
+            var aImg = oBox.getElementsByTagName("img");
+            var leftA = aUl[0].getElementsByTagName("a");
+            var rightA = aUl[1].getElementsByTagName("a");
+
+            var aA = document.querySelectorAll("ul a");//DOM方法
+
+
+            var arr =[];
+            var len = aUl[0].getElementsByTagName("a").length;
+            for(var i=0;i<aUl.length;i++){
+                for(var j=0;j<len;j++){
+                    arr[i*7+j] = aUl[i].getElementsByTagName("a")[j];
+                }
+            }
+            console.log(arr);
+            for(var i=0;i<arr.length;i++){
+                arr[i].index = i;
+                arr[i].onmouseover = function(){
+                    for(var i=0;i<arr.length;i++){
+                        aImg[i].className = "";
+                        arr[i].className = "";
+                    }
+                    aImg[this.index].className = "select";
+                    arr[this.index].className = "hover";
+                };
+            }
+            /*
+            for(var i=0;i<leftA.length;i++){
+                leftA[i].index=i;
+                rightA[i].index=i;
+                var a;
+                leftA[i].onmouseover = function(){
+                    for(var i=0;i<leftA.length;i++){
+                        aImg[i].className='';
+                        aImg[i+7].className='';
+                        leftA[i].className='';
+                        rightA[i].className='';
+                        a=i;
+                    }
+                    aImg[this.index].className = "select";
+                    leftA[this.index].className="hover";
+                };
+                rightA[i].onmouseover = function(){
+                    for(var i=0;i<rightA.length;i++){
+                        aImg[i+7].className='';
+                        aImg[i].className='';
+                        rightA[i].className='';
+                        leftA[i].className='';
+                    }
+                    aImg[this.index+7].className = "select";
+                    rightA[this.index].className="hover";
+                };
+            }
+            */
+        }
+        setInterval(function(){
+
+        },1000/60);
+    </script>
+</head>
+<body>
+<div id="box">
+
+    <ul id="left">
+
+        <li><a href="#">连衣裙</a></li>
+        <li><a href="#">雪纺</a></li>
+        <li><a href="#">TT恤</a></li>
+        <li><a href="#">铅笔裤</a></li>
+        <li><a href="#">婚纱</a></li>
+        <li><a href="#">外套</a></li>
+        <li><a href="#">连体裤</a></li>
+    </ul>
+    <div id="center">
+        <a href="#"><img src="img/1.jpg" class="select"></a>
+        <a href="#"><img src="img/2.jpg"></a>
+        <a href="#"><img src="img/3.jpg"></a>
+        <a href="#"><img src="img/4.jpg"></a>
+        <a href="#"><img src="img/5.jpg"></a>
+        <a href="#"><img src="img/6.jpg"></a>
+        <a href="#"><img src="img/7.jpg"></a>
+        <a href="#"><img src="img/8.jpg"></a>
+        <a href="#"><img src="img/9.jpg"></a>
+        <a href="#"><img src="img/10.jpg"></a>
+        <a href="#"><img src="img/11.jpg"></a>
+        <a href="#"><img src="img/12.jpg"></a>
+        <a href="#"><img src="img/13.jpg"></a>
+        <a href="#"><img src="img/14.jpg"></a>
+
+
+
+
+    </div>
+    <ul id="right">
+        <li><a href="#">包包</a></li>
+        <li><a href="#">凉鞋</a></li>
+        <li><a href="#">单鞋</a></li>
+        <li><a href="#">太阳镜</a></li>
+        <li><a href="#">丝袜</a></li>
+        <li><a href="#">帆布鞋</a></li>
+        <li><a href="#">情侣装</a></li>
+    </ul>
+</div>
+</body>
+</html>
